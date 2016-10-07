@@ -83,11 +83,13 @@
 var map = L.map('map');
 var breweryMarkers = new L.FeatureGroup();
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-  id: '<your id here>',
-  accessToken: '<your token here>',
-  maxZoom: 16
-} ).addTo(map);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar'}
+// 	, {
+//   id: '<your id here>',
+//   accessToken: '<your token here>',
+//   maxZoom: 16
+// } 
+).addTo(map);
 
 
 /* Parse JSON file, create charts, draw markers on map */
