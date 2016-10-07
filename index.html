@@ -25,37 +25,13 @@
             </div>
         </div>
         <div class="row" id="control-row">
-<!--             <div class="col-xs-2 pie-chart">
-                <h4>Year <small><a id="year">reset</a></small></h4>
-                <div class="dc-chart" id="chart-ring-year"></div>
-            </div>
-            <div class="col-xs-2 pie-chart">
-                <h4>Month <small><a id="month" href="#">reset</a></small></h4>
-                <div class="dc-chart" id="chart-ring-month"></div>
-            </div>
-            <div class="col-xs-2 pie-chart">
-                <h4>Day <small><a id="day">reset</a></small></h4>
-                <div id="chart-ring-day" class="dc-chart"></div>
-            </div> -->
+
             <div class="col-xs-6">
                 <h4>Breweries</h4>
                 <div id="map"></div>
             </div>
         </div>
-<!--         <div class="row">
-            <div class="col-xs-6 col-md-3">
-                <div class="dc-chart" id="chart-rating-count"></div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="dc-chart" id="chart-community-rating-count"></div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="dc-chart" id="chart-abv-count"></div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="dc-chart" id="chart-ibu-count"></div>
-            </div>
-        </div> -->
+
         <div class="row">
             <div class="col-xs-12">
                 <table class="table table-bordered table-striped" id="data-table">
@@ -153,151 +129,7 @@
             countPerABV = abvDim.group().reduceCount(),
             countPerIBU = ibuDim.group().reduceCount();
 
-        // specify charts
-        // var yearChart = dc.pieChart('#chart-ring-year'),
-        //     monthChart = dc.pieChart('#chart-ring-month'),
-        //     dayChart = dc.pieChart('#chart-ring-day'),
-        //     ratingCountChart = dc.barChart('#chart-rating-count'),
-        //     commRatingCountChart = dc.barChart('#chart-community-rating-count'),
-        //     abvCountChart = dc.barChart('#chart-abv-count'),
-        //     ibuCountChart = dc.barChart('#chart-ibu-count'),
-        //     dataCount = dc.dataCount('#data-count')
         var dataTable = dc.dataTable('#data-table');
-
-        // yearChart
-        //     .width(150)
-        //     .height(150)
-        //     .dimension(yearDim)
-        //     .group(countPerYear)
-        //     .innerRadius(20);
-
-        // monthChart
-        //     .width(150)
-        //     .height(150)
-        //     .dimension(monthDim)
-        //     .group(countPerMonth)
-        //     .innerRadius(20)
-        //     .ordering(function(d) {
-        //         var order = {
-        //             'Jan': 1,
-        //             'Feb': 2,
-        //             'Mar': 3,
-        //             'Apr': 4,
-        //             'May': 5,
-        //             'Jun': 6,
-        //             'Jul': 7,
-        //             'Aug': 8,
-        //             'Sep': 9,
-        //             'Oct': 10,
-        //             'Nov': 11,
-        //             'Dec': 12
-        //         };
-        //         return order[d.key];
-        //     });
-
-        // dayChart
-        //     .width(150)
-        //     .height(150)
-        //     .dimension(dayOfWeekDim)
-        //     .group(countPerDay)
-        //     .innerRadius(20)
-        //     .ordering(function(d) {
-        //         var order = {
-        //             'Mon': 0,
-        //             'Tue': 1,
-        //             'Wed': 2,
-        //             'Thu': 3,
-        //             'Fri': 4,
-        //             'Sat': 5,
-        //             'Sun': 6
-        //         }
-        //         return order[d.key];
-        //     });
-
-        // ratingCountChart
-        //     .width(300)
-        //     .height(180)
-        //     .dimension(ratingDim)
-        //     .group(countPerRating)
-        //     .x(d3.scale.linear().domain([0, 5.2]))
-        //     .elasticY(true)
-        //     .centerBar(true)
-        //     .barPadding(5)
-        //     .xAxisLabel('My rating')
-        //     .yAxisLabel('Count')
-        //     .margins({
-        //         top: 10,
-        //         right: 20,
-        //         bottom: 50,
-        //         left: 50
-        //     });
-        // ratingCountChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
-
-        // commRatingCountChart
-        //     .width(300)
-        //     .height(180)
-        //     .dimension(commRatingDim)
-        //     .group(countPerCommRating)
-        //     .x(d3.scale.linear().domain([0, 5.2]))
-        //     .elasticY(true)
-        //     .centerBar(true)
-        //     .barPadding(5)
-        //     .xAxisLabel('Community rating')
-        //     .yAxisLabel('Count')
-        //     .margins({
-        //         top: 10,
-        //         right: 20,
-        //         bottom: 50,
-        //         left: 50
-        //     });
-        // commRatingCountChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
-
-        // abvCountChart
-        //     .width(300)
-        //     .height(180)
-        //     .dimension(abvDim)
-        //     .group(countPerABV)
-        //     .x(d3.scale.linear().domain([-0.2, d3.max(beerData, function(d) {
-        //         return d.beer.beer_abv;
-        //     }) + 0.2]))
-        //     .elasticY(true)
-        //     .centerBar(true)
-        //     .barPadding(2)
-        //     .xAxisLabel('Alcohol By Volume (%)')
-        //     .yAxisLabel('Count')
-        //     .margins({
-        //         top: 10,
-        //         right: 20,
-        //         bottom: 50,
-        //         left: 50
-        //     });
-
-        // ibuCountChart
-        //     .width(300)
-        //     .height(180)
-        //     .dimension(ibuDim)
-        //     .group(countPerIBU)
-        //     .x(d3.scale.linear().domain([-2, d3.max(beerData, function(d) {
-        //         return d.beer.beer_ibu;
-        //     }) + 2]))
-        //     .elasticY(true)
-        //     .centerBar(true)
-        //     .barPadding(5)
-        //     .xAxisLabel('International Bitterness Units')
-        //     .yAxisLabel('Count')
-        //     .xUnits(function(d) {
-        //         return 5;
-        //     })
-        //     .margins({
-        //         top: 10,
-        //         right: 20,
-        //         bottom: 50,
-        //         left: 50
-        //     });
-
-        // dataCount
-        //     .dimension(ndx)
-        //     .group(all);
 
         dataTable
             .dimension(allDim)
@@ -306,30 +138,30 @@
             })
             .size(100)
             .columns([
-                function(d) {
-                    return d.brewery.brewery_name;
-                },
-                function(d) {
-                    return d.beer.beer_name;
-                },
-                function(d) {
-                    return d.beer.beer_style;
-                },
-                function(d) {
-                    return d.rating_score;
-                },
-                function(d) {
-                    return d.beer.rating_score;
-                },
-                function(d) {
-                    return d.beer.beer_abv;
-                },
-                function(d) {
-                    return d.beer.beer_ibu;
-                }
-            ])
-            .sortBy(dc.pluck('rating_score'))
-            .order(d3.descending)
+            //     function(d) {
+            //         return d.brewery.brewery_name;
+            //     },
+            //     function(d) {
+            //         return d.beer.beer_name;
+            //     },
+            //     function(d) {
+            //         return d.beer.beer_style;
+            //     },
+            //     function(d) {
+            //         return d.rating_score;
+            //     },
+            //     function(d) {
+            //         return d.beer.rating_score;
+            //     },
+            //     function(d) {
+            //         return d.beer.beer_abv;
+            //     },
+            //     function(d) {
+            //         return d.beer.beer_ibu;
+            //     }
+            // ])
+            // .sortBy(dc.pluck('rating_score'))
+            // .order(d3.descending)
             .on('renderlet', function(table) {
                 // each time table is rendered remove nasty extra row dc.js insists on adding
                 table.select('tr.dc-table-group').remove();
@@ -352,21 +184,6 @@
             dc.filterAll();
             dc.renderAll();
         });
-
-        // d3.selectAll('a#year').on('click', function() {
-        //     yearChart.filterAll();
-        //     dc.redrawAll();
-        // });
-
-        // d3.selectAll('a#month').on('click', function() {
-        //     monthChart.filterAll();
-        //     dc.redrawAll();
-        // });
-
-        // d3.selectAll('a#day').on('click', function() {
-        //     dayChart.filterAll();
-        //     dc.redrawAll();
-        // });
 
         // showtime!
         dc.renderAll();
